@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Converse — Cross-cutting responsive refinements
+   ========================================================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .sidebar-header { padding: 10px 14px; }
+    .search-box { padding: 8px 14px 4px; }
+    .chat-header { padding: 8px 14px; min-height: 54px; }
+    .composer { padding: 8px 14px 10px; }
+    .brand-features { display: none; }
+}
+
+@media (min-width: 1440px) {
+    .app-shell { grid-template-columns: 340px 1fr; }
+    .msg-content { max-width: min(65%, 700px); }
+    body { font-size: 15.5px; }
+}
+
+@media (min-width: 1920px) {
+    .app-shell { grid-template-columns: 360px 1fr; }
+    .msg-content { max-width: min(60%, 780px); }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .icon-btn { min-width: 42px; min-height: 42px; }
+    .room-item { padding: 12px 12px; }
+    .send-btn { width: 46px; height: 46px; }
+}
+
+@media (prefers-contrast: more) {
+    :root {
+        --border-soft: rgba(148, 163, 184, 0.35);
+        --text-400: #b8c4d6;
+        --text-500: #8a98ad;
+    }
+}
+
+@media (max-width: 900px) {
+    .member-list, .members-list { max-height: 220px; }
+}
+
+@media (max-width: 768px) {
+    .modal-card.modal-wide { width: 100%; }
+    .call-stage { padding: 12px; }
+    .call-video-main { aspect-ratio: 4/3; }
+    .notif-panel { right: -40px; }
+}
+
+@media (max-width: 480px) {
+    .call-btn { width: 48px; height: 48px; }
+    .call-btn svg { width: 20px; height: 20px; }
+    .call-remote-videos video { width: 110px; height: 70px; }
+    .emoji-panel { width: calc(100vw - 24px); left: -8px; }
+    .sticker-panel { width: calc(100vw - 24px); left: -8px; }
+}
+
+@media (max-width: 360px) {
+    .chat-header { padding: 8px 8px; }
+    .room-head h2 { font-size: 14px; }
+    .msg-content { max-width: 92%; }
+    .send-btn { width: 40px; height: 40px; }
+    .header-actions { gap: 2px; }
+    .icon-btn { width: 34px; height: 34px; }
+}
+
+@media print {
+    .sidebar, .composer, .chat-header, .toast-stack { display: none !important; }
+    .chat-main { background: #fff; }
+    .msg-bubble { border: 1px solid #ccc; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
