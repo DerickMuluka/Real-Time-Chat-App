@@ -1,0 +1,56 @@
+# ==========================================================================
+# Converse — Apache config for public/
+# ==========================================================================
+
+# Enable default index files
+DirectoryIndex index.php index.html
+
+# Allow access
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>
+
+# Don't list directories
+Options -Indexes
+
+# Hide server signature
+ServerSignature Off
+
+# Block access to hidden files (e.g. .env, .git)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Block backup/config files
+<FilesMatch "\.(bak|conf|dist|fla|ini|log|psd|sh|sql|swp|swop)$">
+    Require all denied
+</FilesMatch>
+
+# MIME types
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType text/css .css
+    AddType image/svg+xml .svg
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Browser caching for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+    ExpiresByType image/svg+xml "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+</IfModule>
